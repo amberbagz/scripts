@@ -1,0 +1,15 @@
+Img url
+Inspect > Sources > instagram.*.net > 
+
+$url = "https://www.instagram.com/swarali_09/"
+
+iterate div class v1Nh3 kIKUG  _bz0w
+the a href gives you the url 
+
+$url = "https://www.instagram.com/p/CYjouZIPf3BA23cTl9H_ir9x6fVzUZKNS4fuQQ0/"
+
+$regex = "https:\/\/.*s640x640.*jpg\?_nc_ht.*"
+
+$result = Invoke-WebRequest $url -UseBasicParsing -ea silentlycontinue
+
+$result -split "`n" | Select-String -pattern $regex -Allmatches | % { $_.Matches | % { $_.Value } }
