@@ -1,0 +1,1 @@
+start "" "C:\Program Files\BraveSoftware\Brave-Browser\Application\brave" "https://reddit.com" "https://youtube.com" "https://google.com" --incognito
