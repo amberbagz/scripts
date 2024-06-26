@@ -1,12 +1,24 @@
 Img url
 Inspect > Sources > instagram.*.net > 
 
-$url = "https://www.instagram.com/swarali_09/"
+$baseUrl = "https://www.instagram.com/samdoesarts/"
 
-iterate div class v1Nh3 kIKUG  _bz0w
-the a href gives you the url 
+In div class "x1lliihq x1n2onr6 xh8yej3 x4gyw5p xfllauq xo2y696 x11i5rnm x2pgyrj", there's an <a/> element with class "x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _a6hd"
+the a href gives you the url. We want to collect these urls
 
-$url = "https://www.instagram.com/p/CYjouZIPf3BA23cTl9H_ir9x6fVzUZKNS4fuQQ0/"
+$postDivClass = "x1lliihq x1n2onr6 xh8yej3 x4gyw5p xfllauq xo2y696 x11i5rnm x2pgyrj"
+$postLinkClass = "x1i10hfl xjbqb8w x1ejq31n xd10rxx x1sy0etr x17r0tee x972fbf xcfux6l x1qhh985 xm0m39n x9f619 x1ypdohk xt0psk2 xe8uvvx xdj266r x11i5rnm xat24cr x1mh8g0r xexx8yu x4uap5 x18d9i69 xkhd6sd x16tdsg8 x1hl2dhg xggy1nq x1a2a7pz _a6hd"
+
+$divRegex = "<div>*x1lliihq x1n2onr6 xh8yej3 x4gyw5p xfllauq xo2y696 x11i5rnm x2pgyrj*</div>"
+
+$divResult = Invoke-WebRequest $url -UseBasicParsing -ea silentlycontinue
+$divResult -split "`n" | Select-String -pattern $divRegex -Allmatches | % { $_.Matches | % { $_.Value } }
+
+$linkRegex = ""
+
+$url = "https://www.instagram.com/p/C3A368DRMIV"
+
+If there exists a button with class " _afxv _al46 _al47", then there are more images in the post, so append the link with "?img_index=2"
 
 $regex = "https:\/\/.*s640x640.*jpg\?_nc_ht.*"
 
