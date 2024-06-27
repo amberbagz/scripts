@@ -41,9 +41,7 @@ const getMedia = () => {
   // get input value
   let url = _('input').value;
   if (url) {
-    fetch(url, {
-		mode: 'no-cors',
-	}).
+    fetch(url).
     then(r => r.text()).
     then(r => {
       // render html
