@@ -29,3 +29,8 @@ $regex = "https:\/\/.*s640x640.*jpg\?_nc_ht.*"
 $result = Invoke-WebRequest $url -UseBasicParsing -ea silentlycontinue
 
 $result -split "`n" | Select-String -pattern $regex -Allmatches | % { $_.Matches | % { $_.Value } }
+----------
+
+24-Jul-2024
+We'll try to generate a token
+curl -X POST 'http://api.instagram.com/oauth/access_token' -F client_id=684477648739411 -F client_secret=eb8c713c492d1f9c19d7120e94ffcb205 -F grant_type=authorization_code -F redirect_uri=http://www.yoursite.com/ -F code=AQDp3TtBQQh297S2as5YbDNAU9h3772mvryptCeWWT28z-Xadqq4YfA_YiGXui-cNnLjT7Wg_mrC0OAe0Q5l5x1RvdMarGvFIC1fv7I_kz32oGfKn-R1YlTEyLnPCKksGHeVgw7aJ3iLgXaS8QB9q-WNdG8PiWICz5Icwb4XULBNXs9DONlkIA1i94lNXoKsnkbLL13aMJLGpiiMksitRuZSRblwKrI1dEi7xqeHPcd9VJQ
